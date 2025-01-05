@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days Until June 1</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        #counter {
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="counter"></div>
+
+    <script>
+        function calculateDaysUntilJune() {
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const juneFirst = new Date(currentYear, 5, 1); // June 1st
+
+            // If June 1 has already passed this year, calculate for next year
+            if (today > juneFirst) {
+                juneFirst.setFullYear(currentYear + 1);
+            }
+
+            const diffTime = juneFirst - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            return diffDays;
+        }
+
+        document.getElementById('counter').textContent = calculateDaysUntilJune() + " days left until June 1st.";
+    </script>
+</body>
+</html>
